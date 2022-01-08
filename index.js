@@ -52,7 +52,7 @@ ServiceRouter.prototype.handleRequest = async function(request, environment, con
             }
         }
 
-        return new Response("404 - Resource not found", {
+        return new Response('404 - Resource not found', {
             status: 404, headers: { 'Content-Type': 'text/plain; charset=utf-8'}
         });
     }
@@ -67,6 +67,6 @@ ServiceRouter.prototype.handleRequest = async function(request, environment, con
             status: 500, headers: { 'Content-Type': 'text/plain; charset=utf-8'}
         });
     }
-}
+};
 
-export default { ServiceRouter };
+export { ServiceRouter };
