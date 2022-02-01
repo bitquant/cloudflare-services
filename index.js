@@ -22,7 +22,7 @@ ServiceRouter.prototype.handleRequest = async function(request, environment, con
     try {
 
         if (this.ingressHandler !== undefined) {
-            let igResult = this.ingressHandler(request, environment, context, requestContext);
+            let igResult = await this.ingressHandler(request, environment, context, requestContext);
             if (igResult instanceof Response) {
                 return igResult;
             }
@@ -36,7 +36,7 @@ ServiceRouter.prototype.handleRequest = async function(request, environment, con
             const response = await handler(request, environment, context, requestContext);
             if (response instanceof Response) {
                 if (this.egressHandler !== undefined) {
-                    let egResult = this.egressHandler(request, environment, context, requestContext, response);
+                    let egResult = await this.egressHandler(request, environment, context, requestContext, response);
                     if (egResult instanceof Response) {
                         return egResult;
                     }
